@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { SearchComponent } from './searchComponent';
 import { DailyWeather } from './dailyWeatherDisplay';
 import axios, { AxiosRequestConfig } from 'axios';
-import { maxHeaderSize } from 'http';
 
 //styles
 const Main = styled.div`
@@ -10,11 +10,18 @@ const Main = styled.div`
 `;
 
 //types
-type callbackBody = {
+type weatherData = {
     coord: { lon: number; lat: number };
     weather: [{ id: number; main: string; description: string; icon: string }];
     base: string;
-    main: { temp: number; feels_like: number; temp_min: number; temp_max: number; pressure: number; humidity: number };
+    main: {
+        temp: number;
+        feels_like: number;
+        temp_min: number;
+        temp_max: number;
+        pressure: number;
+        humidity: number;
+    };
     visibility: number;
     wind: { speed: number; deg: number };
     clouds: { all: number };
@@ -25,7 +32,7 @@ type callbackBody = {
     name: string;
     cod: number;
 };
-const body: callbackBody = {
+const body: weatherData = {
     coord: { lon: -0.1257, lat: 51.5085 },
     weather: [{ id: 802, main: 'Clouds', description: 'scattered clouds', icon: '03d' }],
     base: 'stations',
@@ -41,7 +48,7 @@ const body: callbackBody = {
     cod: 200,
 };
 
-const options: AxiosRequestConfig = {
+const AxiosOptions: AxiosRequestConfig = {
     method: 'get',
     url: 'https://community-open-weather-map.p.rapidapi.com/weather',
     params: {
@@ -62,7 +69,7 @@ const options: AxiosRequestConfig = {
 
 const makeRequest = () => {
     axios
-        .request(options)
+        .request(AxiosOptions)
         .then(function (response) {
             console.log(response.data);
         })
@@ -70,22 +77,12 @@ const makeRequest = () => {
             console.error(error);
         });
 };
-interface testing {
-    firstname: string;
-    lastname: string;
-}
-const testingObj: testing = {
-    firstname: 'henrik',
-    lastname: 'nilsson',
-};
+
 export const MainContainer: React.FC = (): React.ReactElement => {
     return (
         <Main>
-            <div>
-                <button onClick={makeRequest}>Click me!</button>
-                <input></input>
-            </div>
-            <DailyWeather bajs={testingObj} />
+            <SearchComponent />
+            <DailyWeather weatherData={body} />
         </Main>
     );
 };
