@@ -2,14 +2,14 @@ import 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
-    body: '#9dc7e1',
-    color: 'black',
-    text: '#061537',
-    toggleBorder: '#FFF',
-    background: '#363537',
+    body: '#73C7E7',
+    color: 'white',
+    text: '#172A3A',
+    toggleBorder: 'yellow',
+    background: 'yellow',
 
     buttonStyles: {
-        primary: '#02182B',
+        primary: '#143166',
         secondary: 'white',
     },
 };
@@ -18,11 +18,12 @@ export const darkTheme: DefaultTheme = {
     body: '#0c1445',
     text: '#FAFAFA',
     color: 'white',
-    toggleBorder: '#6B8096',
-    background: '#999',
+    toggleBorder: 'yellow',
+    background: 'yellow',
 
     buttonStyles: {
         primary: 'white',
         secondary: 'black',
     },
 };
+/*#363537*/

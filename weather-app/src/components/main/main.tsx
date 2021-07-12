@@ -1,88 +1,53 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { SearchComponent } from './searchComponent';
 import { DailyWeather } from './dailyWeatherDisplay';
 import axios, { AxiosRequestConfig } from 'axios';
+import { weatherData } from '../types';
 
-//styles
 const Main = styled.div`
     min-height: 85vh;
 `;
-
-//types
-type weatherData = {
-    coord: { lon: number; lat: number };
-    weather: [{ id: number; main: string; description: string; icon: string }];
-    base: string;
-    main: {
-        temp: number;
-        feels_like: number;
-        temp_min: number;
-        temp_max: number;
-        pressure: number;
-        humidity: number;
-    };
-    visibility: number;
-    wind: { speed: number; deg: number };
-    clouds: { all: number };
-    dt: number;
-    sys: { type: number; id: number; country: string; sunrise: number; sunset: number };
-    timezone: number;
-    id: number;
-    name: string;
-    cod: number;
-};
-const body: weatherData = {
-    coord: { lon: -0.1257, lat: 51.5085 },
-    weather: [{ id: 802, main: 'Clouds', description: 'scattered clouds', icon: '03d' }],
-    base: 'stations',
-    main: { temp: 282.5, feels_like: 281.16, temp_min: 281.48, temp_max: 283.15, pressure: 1034, humidity: 43 },
-    visibility: 10000,
-    wind: { speed: 2.57, deg: 270 },
-    clouds: { all: 42 },
-    dt: 1618304641,
-    sys: { type: 1, id: 1414, country: 'GB', sunrise: 1618290519, sunset: 1618339974 },
-    timezone: 3600,
-    id: 2643743,
-    name: 'London',
-    cod: 200,
-};
-
-const AxiosOptions: AxiosRequestConfig = {
-    method: 'get',
-    url: 'https://community-open-weather-map.p.rapidapi.com/weather',
-    params: {
-        q: 'London,uk',
-        lat: '0',
-        lon: '0',
-        callback: 'body',
-        id: '2172797',
-        lang: 'null',
-        units: '"metric" or "imperial"',
-        mode: 'xml, html',
-    },
-    headers: {
-        'x-rapidapi-key': `${process.env.REACT_APP_GOOGLE_API_KEY}`,
-        'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
-    },
-};
-
-const makeRequest = () => {
-    axios
-        .request(AxiosOptions)
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-};
+const Loading = styled.div`
+    min-height: 10vh;
+`;
 
 export const MainContainer: React.FC = (): React.ReactElement => {
+    const [weatherDailyData, setweatherDailyData] = React.useState<weatherData | null>();
+    const newWeatherSearch = (searchWord: string) => {
+        const AxiosOptions: AxiosRequestConfig = {
+            method: 'get',
+            url: 'https://community-open-weather-map.p.rapidapi.com/weather',
+            params: {
+                q: `${searchWord}`,
+                units: 'metric',
+                lang: 'sv',
+            },
+            headers: {
+                'x-rapidapi-key': `${process.env.REACT_APP_GOOGLE_API_KEY}`,
+                'x-rapidapi-host': 'community-open-weather-map.p.rapidapi.com',
+            },
+        };
+        axios
+            .request(AxiosOptions)
+            .then(function (response) {
+                console.log(response.data);
+                setweatherDailyData(response.data);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    };
+
+    useEffect(() => {
+        newWeatherSearch('Göteborg');
+    }, []);
+
     return (
         <Main>
-            <SearchComponent />
-            <DailyWeather weatherData={body} />
+            <SearchComponent newSearch={newWeatherSearch} />
+            {weatherDailyData ? <DailyWeather weatherData={weatherDailyData} /> : <Loading>loading</Loading>}
         </Main>
     );
 };
