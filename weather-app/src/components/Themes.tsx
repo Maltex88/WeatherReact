@@ -2,9 +2,9 @@ import 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
-    body: '#73C7E7',
-    color: 'white',
-    text: '#172A3A',
+    body: 'white' /*#73C7E7, #172A3A*/,
+    color: 'black',
+    text: 'black',
     toggleBorder: 'yellow',
     background: 'yellow',
 

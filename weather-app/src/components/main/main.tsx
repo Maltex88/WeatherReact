@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { WeatherSlideshow } from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './searchComponent';
 import { DailyWeather } from './dailyWeatherDisplay';
 import axios, { AxiosRequestConfig } from 'axios';
@@ -41,12 +42,14 @@ export const MainContainer: React.FC = (): React.ReactElement => {
     };
 
     useEffect(() => {
-        newWeatherSearch('Göteborg');
+        //  newWeatherSearch('Göteborg');
     }, []);
 
     return (
         <Main>
+            <WeatherSlideshow />
             <SearchComponent newSearch={newWeatherSearch} />
+
             {weatherDailyData ? <DailyWeather weatherData={weatherDailyData} /> : <Loading>loading</Loading>}
         </Main>
     );
