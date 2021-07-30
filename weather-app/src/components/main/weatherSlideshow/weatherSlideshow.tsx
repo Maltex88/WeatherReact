@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
-
+import { CostumIcon } from '../../helperFunctions/CostumWeathericons';
 //Children
 import { SlideItem } from './slideItem';
 //Types
@@ -14,6 +14,7 @@ import Berlin from '../../../assets/berlin.jpg';
 import Italy from '../../../assets/Italy.jpg';
 import Moscow from '../../../assets/moscow.jpg';
 import Budapest from '../../../assets/Budapest.jpg';
+import Dubai from '../../../assets/dubai.jpg';
 
 const Main = styled.div`
     display: flex;
@@ -33,9 +34,9 @@ export const WeatherSlideshow: React.FC = () => {
     const [ItalyData, setItalyData] = React.useState<weatherData | null>();
     const [MoscowData, setMoscowData] = React.useState<weatherData | null>();
     const [BudapestData, setBudapestData] = React.useState<weatherData | null>();
+    const [DubaiData, setDubaiData] = React.useState<weatherData | null>();
 
-    const GetDataforSlideshow1 = (searchWord: string) => {
-        console.log('i get a call, then fetching data');
+    const GetDataforSlideshow = (searchWord: string) => {
         const AxiosOptions: AxiosRequestConfig = {
             method: 'get',
             url: 'https://community-open-weather-map.p.rapidapi.com/weather',
@@ -55,11 +56,12 @@ export const WeatherSlideshow: React.FC = () => {
 
     useEffect(() => {
         Promise.all([
-            GetDataforSlideshow1('Paris'),
-            GetDataforSlideshow1('Berlin'),
-            GetDataforSlideshow1('Italy'),
-            GetDataforSlideshow1('Budapest'),
-            GetDataforSlideshow1('Moscow'),
+            GetDataforSlideshow('Paris'),
+            GetDataforSlideshow('Berlin'),
+            GetDataforSlideshow('Italy'),
+            GetDataforSlideshow('Budapest'),
+            GetDataforSlideshow('Moscow'),
+            GetDataforSlideshow('Dubai'),
         ])
             .then(function (results) {
                 setParisData(results[0].data);
@@ -67,6 +69,7 @@ export const WeatherSlideshow: React.FC = () => {
                 setItalyData(results[2].data);
                 setBudapestData(results[3].data);
                 setMoscowData(results[4].data);
+                setDubaiData(results[5].data);
             })
             .catch(function (error) {
                 console.log(error);
@@ -74,11 +77,13 @@ export const WeatherSlideshow: React.FC = () => {
     }, []);
     return (
         <Main>
+            <CostumIcon IconString="WiCloud" />
             {ParisData ? <SlideItem town={Paris} weatherData={ParisData} /> : <LoadingPlaceHolder />}
             {BerlinData ? <SlideItem town={Berlin} weatherData={BerlinData} /> : <LoadingPlaceHolder />}
             {ItalyData ? <SlideItem town={Italy} weatherData={ItalyData} /> : <LoadingPlaceHolder />}
             {BudapestData ? <SlideItem town={Budapest} weatherData={BudapestData} /> : <LoadingPlaceHolder />}
             {MoscowData ? <SlideItem town={Moscow} weatherData={MoscowData} /> : <LoadingPlaceHolder />}
+            {DubaiData ? <SlideItem town={Dubai} weatherData={DubaiData} /> : <LoadingPlaceHolder />}
         </Main>
     );
 };

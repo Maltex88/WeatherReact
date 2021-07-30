@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { CostumIcon } from '../../helperFunctions/CostumWeathericons';
 
 interface Props {
     town?: string;
@@ -21,8 +22,9 @@ const NameTempText = styled.p`
 export const SlideItem: React.FC<Props> = ({ town, weatherData }) => {
     return (
         <Background town={town}>
+            <CostumIcon IconString="`${hej}`" />
             <NameTempText>{weatherData.name}</NameTempText>
-            <NameTempText>{weatherData.main.temp}</NameTempText>
+            <NameTempText>{Math.round(weatherData.main.temp)}</NameTempText>
         </Background>
     );
 };
