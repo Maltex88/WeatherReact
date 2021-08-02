@@ -22,7 +22,11 @@ const NameTempText = styled.p`
 export const SlideItem: React.FC<Props> = ({ town, weatherData }) => {
     return (
         <Background town={town}>
-            <CostumIcon IconString="`${hej}`" />
+            <CostumIcon
+                MainWeather={weatherData.weather[0].main}
+                WeatherDescription={weatherData.weather[0].icon}
+                Icon={weatherData.weather[0].description}
+            />
             <NameTempText>{weatherData.name}</NameTempText>
             <NameTempText>{Math.round(weatherData.main.temp)}</NameTempText>
         </Background>

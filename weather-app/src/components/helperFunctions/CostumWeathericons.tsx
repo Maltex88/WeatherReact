@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { WiDaySunny } from 'react-icons/wi';
-import { WiDayCloudy } from 'react-icons/wi';
+import { IconType } from 'react-icons';
+
+import { checkMainWeather } from './CustomIconFunc';
 interface Props {
-    IconString: string;
+    MainWeather: string;
+    WeatherDescription: string;
+    Icon: string;
 }
 
-export const CostumIcon: React.FC<Props> = ({ IconString }) => {
-    console.log('hej', IconString);
-    return <h2>hej</h2>;
+export const CostumIcon: React.FC<Props> = ({ MainWeather, Icon }) => {
+    const [displayIcon, setDisplayIcon] = React.useState<IconType | null>();
+    React.useEffect(() => {
+        setDisplayIcon(checkMainWeather(MainWeather, Icon));
+    }, []);
+
+    return <div>{displayIcon ? <h2>{displayIcon}</h2> : <p>hej</p>}</div>;
 };

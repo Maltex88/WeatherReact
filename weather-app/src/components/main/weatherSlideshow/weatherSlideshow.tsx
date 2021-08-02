@@ -2,9 +2,10 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
-import { CostumIcon } from '../../helperFunctions/CostumWeathericons';
+
 //Children
 import { SlideItem } from './slideItem';
+import { CostumIcon } from '../../helperFunctions/CostumWeathericons';
 //Types
 import { weatherData } from '../../types';
 
@@ -43,7 +44,7 @@ export const WeatherSlideshow: React.FC = () => {
             params: {
                 q: `${searchWord}`,
                 units: 'metric',
-                lang: 'sv',
+                lang: 'eng',
             },
             headers: {
                 'x-rapidapi-key': `${process.env.REACT_APP_GOOGLE_API_KEY}`,
@@ -55,7 +56,8 @@ export const WeatherSlideshow: React.FC = () => {
     };
 
     useEffect(() => {
-        Promise.all([
+        /* Promise.all([
+            
             GetDataforSlideshow('Paris'),
             GetDataforSlideshow('Berlin'),
             GetDataforSlideshow('Italy'),
@@ -64,6 +66,7 @@ export const WeatherSlideshow: React.FC = () => {
             GetDataforSlideshow('Dubai'),
         ])
             .then(function (results) {
+                
                 setParisData(results[0].data);
                 setBerlinData(results[1].data);
                 setItalyData(results[2].data);
@@ -73,12 +76,17 @@ export const WeatherSlideshow: React.FC = () => {
             })
             .catch(function (error) {
                 console.log(error);
-            });
+            });*/
     }, []);
     return (
         <Main>
-            <CostumIcon IconString="WiCloud" />
-            {ParisData ? <SlideItem town={Paris} weatherData={ParisData} /> : <LoadingPlaceHolder />}
+            <i className="wi wi-owm-212"></i>
+
+            {ParisData ? (
+                <SlideItem town={Paris} weatherData={ParisData} />
+            ) : (
+                <CostumIcon MainWeather={'Clouds'} WeatherDescription={'few clouds'} Icon={'03n'} />
+            )}
             {BerlinData ? <SlideItem town={Berlin} weatherData={BerlinData} /> : <LoadingPlaceHolder />}
             {ItalyData ? <SlideItem town={Italy} weatherData={ItalyData} /> : <LoadingPlaceHolder />}
             {BudapestData ? <SlideItem town={Budapest} weatherData={BudapestData} /> : <LoadingPlaceHolder />}
