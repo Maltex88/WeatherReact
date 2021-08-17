@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { weatherData } from '../types';
+import { weatherData } from '../../types';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc'; // import plugin
 dayjs.extend(utc);

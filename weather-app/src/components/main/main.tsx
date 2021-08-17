@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { WeatherSlideshow } from './weatherSlideshow/weatherSlideshow';
-import { SearchComponent } from './searchComponent';
-import { DailyWeather } from './dailyWeatherDisplay';
+import { SearchComponent } from './weatherSearch/searchComponent';
+import { DailyWeather } from './weatherSearch/dailyWeatherDisplay';
 import axios, { AxiosRequestConfig } from 'axios';
 import { weatherData } from '../types';
 

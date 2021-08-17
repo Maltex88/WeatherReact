@@ -1,10 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { CostumIcon } from '../../helperFunctions/CostumWeathericons';
 
 interface Props {
     town?: string;
     weatherData?: any;
+    key?: number;
+    time?: string;
+    rise?: string;
+    set?: string;
 }
 const Background = styled.div<Props>`
     background-image: url(${(props) => props.town});
@@ -19,14 +22,11 @@ const NameTempText = styled.p`
     font-size: 25px;
     margin: 20px;
 `;
-export const SlideItem: React.FC<Props> = ({ town, weatherData }) => {
+export const SlideItem: React.FC<Props> = ({ town, weatherData, time }) => {
     return (
         <Background town={town}>
-            <CostumIcon
-                MainWeather={weatherData.weather[0].main}
-                WeatherDescription={weatherData.weather[0].icon}
-                Icon={weatherData.weather[0].description}
-            />
+            <p>{time}</p>
+            <i className={'wi wi-owm-' + weatherData.weather[0].id}></i>
             <NameTempText>{weatherData.name}</NameTempText>
             <NameTempText>{Math.round(weatherData.main.temp)}</NameTempText>
         </Background>
