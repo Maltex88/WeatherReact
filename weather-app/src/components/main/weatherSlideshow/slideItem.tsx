@@ -4,10 +4,12 @@ import styled from 'styled-components';
 interface Props {
     town?: string;
     weatherData?: any;
-    key?: number;
-    time?: string;
-    rise?: string;
-    set?: string;
+    timeData?: {
+        locationTime?: string;
+        rise?: string;
+        set?: string;
+        sunLocation: string;
+    };
 }
 const Background = styled.div<Props>`
     background-image: url(${(props) => props.town});
@@ -22,13 +24,20 @@ const NameTempText = styled.p`
     font-size: 25px;
     margin: 20px;
 `;
-export const SlideItem: React.FC<Props> = ({ town, weatherData, time }) => {
+const Test = styled.i`
+    color: green;
+`;
+
+export const SlideItem: React.FC<Props> = ({ town, weatherData, timeData }) => {
     return (
         <Background town={town}>
-            <p>{time}</p>
-            <i className={'wi wi-owm-' + weatherData.weather[0].id}></i>
+            <p>{timeData?.locationTime}</p>
+            <Test className={'wi wi-owm-' + timeData?.sunLocation + '-' + weatherData.weather[0].id}></Test>
             <NameTempText>{weatherData.name}</NameTempText>
-            <NameTempText>{Math.round(weatherData.main.temp)}</NameTempText>
+            <NameTempText>
+                {Math.round(weatherData.main.temp)}
+                <i className={'wi wi-celsius'}></i>
+            </NameTempText>
         </Background>
     );
 };

@@ -16,12 +16,13 @@ export const checkIfSunrise = (timezone: number, sunset: number, sunrise: number
         .unix(sunrise)
         .utcOffset(timezone / 3600)
         .format();
-    const isSunUp = dayjs(locationTime).isBetween(rise, dayjs(rise), null, '[]');
+    const isSunUp = dayjs(locationTime).isBetween(rise, dayjs(set), null, '[]');
 
     return isSunUp;
 };
 
-export const timeFormatHHMM = (timezone: number, sunset: number, sunrise: number) => {
+export const handleAndFormatTime = (timezone: number, sunset: number, sunrise: number) => {
+    let sunLocation = '';
     const locationTime = dayjs()
         .utcOffset(timezone / 3600)
         .format('HH:mm');
@@ -33,6 +34,11 @@ export const timeFormatHHMM = (timezone: number, sunset: number, sunrise: number
         .unix(sunrise)
         .utcOffset(timezone / 3600)
         .format('HH:mm');
-
-    return [locationTime, rise, set];
+    const isSunUp = checkIfSunrise(timezone, sunset, sunrise);
+    if (isSunUp) {
+        sunLocation = 'day';
+    } else {
+        sunLocation = 'night';
+    }
+    return { locationTime, rise, set, sunLocation };
 };

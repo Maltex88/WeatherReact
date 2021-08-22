@@ -1,11 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useEffect } from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
 
 //Functions
 import { CheckForImg } from '../../helperFunctions/returnTownImg';
-import { timeFormatHHMM, checkIfSunrise } from '../../helperFunctions/handleTimeFunctions';
+import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
 import { GetDataforSlideshow } from './slideShowFunctions';
 
 //Children
@@ -32,7 +31,6 @@ export const WeatherSlideshow: React.FC = () => {
     useEffect(() => {
         (async () => {
             const AxiosWeatherData = await GetDataforSlideshow('2950158,3169070,5856195');
-            console.log(AxiosWeatherData.list);
             setSlideshowData(AxiosWeatherData.list);
         })();
     }, []);
@@ -41,18 +39,8 @@ export const WeatherSlideshow: React.FC = () => {
             {SlideshowData ? (
                 SlideshowData.map((x) => {
                     const townImg = CheckForImg(x.name);
-                    const [time, rise, set] = timeFormatHHMM(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    const sunDown = checkIfSunrise(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    return (
-                        <SlideItem
-                            key={Math.random()}
-                            time={time}
-                            rise={rise}
-                            set={set}
-                            town={townImg}
-                            weatherData={x}
-                        />
-                    );
+                    const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
+                    return <SlideItem key={Math.random()} timeData={timeData} town={townImg} weatherData={x} />;
                 })
             ) : (
                 <LoadingPlaceHolder />
