@@ -1,8 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { IoLocationSharp } from 'react-icons/io5';
+import { Main, Container } from './slideItemStyles';
 
+//break out timeData to own interface/type
 interface Props {
-    town?: string;
     weatherData?: any;
     timeData?: {
         locationTime?: string;
@@ -10,34 +12,45 @@ interface Props {
         set?: string;
         sunLocation: string;
     };
+    BackgroundSkyImg: string;
 }
-const Background = styled.div<Props>`
-    background-image: url(${(props) => props.town});
-    background-size: cover;
-    height: 50vh;
-    width: 30vh;
-    border-radius: 12px;
-    margin: 15px;
-`;
-const NameTempText = styled.p`
+
+const Paragraf = styled.p``;
+const Paragraf1 = styled.p`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: white;
     font-size: 25px;
-    margin: 20px;
 `;
-const Test = styled.i`
-    color: green;
+const Icon = styled.i`
+    display: flex;
+    justify-content: center;
+    font-size: 55px;
 `;
 
-export const SlideItem: React.FC<Props> = ({ town, weatherData, timeData }) => {
+export const SlideItem: React.FC<Props> = ({ BackgroundSkyImg, weatherData, timeData }) => {
     return (
-        <Background town={town}>
-            <p>{timeData?.locationTime}</p>
-            <Test className={'wi wi-owm-' + timeData?.sunLocation + '-' + weatherData.weather[0].id}></Test>
-            <NameTempText>{weatherData.name}</NameTempText>
-            <NameTempText>
-                {Math.round(weatherData.main.temp)}
-                <i className={'wi wi-celsius'}></i>
-            </NameTempText>
-        </Background>
+        <Main BackgroundSkyImg={BackgroundSkyImg}>
+            <Container>
+                <Paragraf>{timeData?.locationTime}</Paragraf>
+                <Paragraf>
+                    {Math.round(weatherData.main.temp)}
+                    <i className={'wi wi-celsius'}></i>
+                </Paragraf>
+            </Container>
+            <Icon className={'wi wi-owm-' + timeData?.sunLocation + '-' + weatherData.weather[0].id} />
+            <Paragraf1>{weatherData.name}</Paragraf1>
+            <Container>
+                <Paragraf1>
+                    <i className={'wi wi-sunrise'}></i>
+                    {timeData?.rise}
+                </Paragraf1>
+                <Paragraf1>
+                    <i className={'wi wi-sunset'}></i>
+                    {timeData?.set}
+                </Paragraf1>
+            </Container>
+        </Main>
     );
 };
