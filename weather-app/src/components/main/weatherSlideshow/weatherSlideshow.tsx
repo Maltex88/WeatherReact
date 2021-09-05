@@ -1,5 +1,4 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useEffect } from 'react';
 
 //styles
@@ -7,8 +6,8 @@ import { Main, LoadingPlaceHolder } from './weatherSlideShowStyles';
 //Functions
 import { DayOrNight } from '../../helperFunctions/returnTownImg';
 import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
-import { GetDataforSlideshow } from './slideShowFunctions';
-
+import { getWeatherDataByID } from '../../../api/axiosFetchFunctions';
+import { gradientColor } from '../../helperFunctions/gradientColor';
 //Children
 import { SlideItem } from './slideItem';
 
@@ -19,20 +18,21 @@ export const WeatherSlideshow: React.FC = () => {
     const [SlideshowData, setSlideshowData] = React.useState<slideShowData | null>();
     useEffect(() => {
         (async () => {
-            const AxiosWeatherData = await GetDataforSlideshow('2147714,1850147,2711537,2950158,3169070,5856195');
-            setSlideshowData(AxiosWeatherData.list);
+            const AxiosWeatherData = await getWeatherDataByID('2147714,1850147,605155,2950158,3169070,5856195');
+            setSlideshowData(AxiosWeatherData);
         })();
     }, []);
     return (
         <Main>
             {SlideshowData ? (
                 SlideshowData.map((x) => {
+                    //return the date in "Monday, august 31"
                     const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
                     const BackgroundSkyImg = DayOrNight(timeData.sunLocation);
                     return (
                         <SlideItem
                             key={Math.random()}
-                            BackgroundSkyImg={BackgroundSkyImg}
+                            weatherColor={gradientColor(x.main.temp)}
                             timeData={timeData}
                             weatherData={x}
                         />

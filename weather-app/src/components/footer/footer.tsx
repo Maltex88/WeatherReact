@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const Foot = styled.div`
     min-height: 7.5vh;
-    border: solid white 3px;
+    background-color: #01000f;
+    color: white;
 `;
 
 export const Footer: React.FC = (): React.ReactElement => {

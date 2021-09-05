@@ -1,21 +1,20 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import styled from 'styled-components';
+
+//Components
 import { WeatherSlideshow } from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
 import { DailyWeather } from './weatherSearch/dailyWeatherDisplay';
+import { Footer } from '../footer/footer';
+import { Header } from '../header/header';
 import axios, { AxiosRequestConfig } from 'axios';
-import { weatherData } from '../types';
 
-const Main = styled.div`
-    min-height: 85vh;
-`;
-const Loading = styled.div`
-    min-height: 10vh;
-`;
+import { weatherData } from '../types';
+import { Main, Loading, BackgroundImg } from './mainStyle';
 
 export const MainContainer: React.FC = (): React.ReactElement => {
     const [weatherDailyData, setweatherDailyData] = React.useState<weatherData | null>();
+
     const newWeatherSearch = (searchWord: string) => {
         const AxiosOptions: AxiosRequestConfig = {
             method: 'get',
@@ -42,15 +41,22 @@ export const MainContainer: React.FC = (): React.ReactElement => {
     };
 
     useEffect(() => {
-        //  newWeatherSearch('Göteborg');
+        (async () => {
+            // const AxiosWeatherData = await getWeatherData('2147714,1850147,2711537,2950158,3169070,5856195');
+            //setSlideshowData(AxiosWeatherData.list);
+        })();
     }, []);
 
     return (
-        <Main>
-            <WeatherSlideshow />
-            <SearchComponent newSearch={newWeatherSearch} />
-
-            {weatherDailyData ? <DailyWeather weatherData={weatherDailyData} /> : <Loading>loading</Loading>}
-        </Main>
+        <div>
+            <BackgroundImg>
+                {weatherDailyData ? <DailyWeather weatherData={weatherDailyData} /> : <Loading>loading</Loading>}
+                <SearchComponent newSearch={newWeatherSearch} />
+            </BackgroundImg>
+            <Main>
+                <WeatherSlideshow />
+                <Footer />
+            </Main>
+        </div>
     );
 };

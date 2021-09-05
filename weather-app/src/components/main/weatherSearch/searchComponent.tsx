@@ -1,12 +1,10 @@
 import * as React from 'react';
 import styled from 'styled-components';
-
+import { ContainerRowCenter } from '../mainStyle';
 const Main = styled.div``;
 
 const SearchButton = styled.button`
     margin: 5px;
-    min-height: 40px;
-    border-radius: 5px;
 `;
 const SearchField = styled.input``;
 interface funcProps {
@@ -18,9 +16,11 @@ export const SearchComponent: React.FC<funcProps> = (props): React.ReactElement 
     };
     //console.log(props.newSearch('Malmö'));
     return (
-        <Main>
-            <SearchField></SearchField>
-            <SearchButton onClick={clickEvent}>Search</SearchButton>
-        </Main>
+        <div>
+            <div>
+                <SearchField></SearchField>
+                <SearchButton onClick={clickEvent}>Search</SearchButton>
+            </div>
+        </div>
     );
 };

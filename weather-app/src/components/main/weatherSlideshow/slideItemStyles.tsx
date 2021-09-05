@@ -2,49 +2,61 @@ import breakpoint from '../../../commons/breakpoints';
 import styled from 'styled-components';
 
 interface Props {
-    BackgroundSkyImg: string;
+    weatherColor: string;
 }
+
+//trying out flip
 export const Main = styled.div<Props>`
-    background-image: url(${(props) => props.BackgroundSkyImg});
-    background-size: cover;
+    ${(props) => props.weatherColor};
+    box-shadow: 0 0 0.3em rgba(0, 0, 0, 10);
+
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 50vh;
     min-width: 30vh;
     border-radius: 12px;
     margin: 1rem;
 
     @media only screen and ${breakpoint.device.md} {
-        min-width: 80%;
-    }
-`;
-export const Container = styled.div`
-    margin 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    &:first-child {
-        justify-content: space-between;
-    }
-    &:last-child {
-        justify-content: space-between;
+        min-width: 60%;
     }
 `;
 
-const Paragraf = styled.p`
-    color: white;
-    font-size: 25px;
+export const ParagrafCenter = styled.p`
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
+    &:nth-child(1) {
+        font-size: 22px;
+    }
+    &:nth-child(2) {
+        opacity: 90%;
+    }
+    &:nth-child(3) {
+        font-size: 22px;
+    }
 `;
-const Paragraf1 = styled.p`
+
+export const Icon = styled.i`
+    font-size: 5rem;
+`;
+
+export const Container = styled.div`
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-size: 25px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px;
+
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
 `;
-const Icon = styled.i`
-    color: white;
-    font-size: 55px;
-    positon: absolute;
+
+export const ColumnContainer = styled.div`
+    flex-direction: column;
+`;
+
+export const ExtraMarginPara = styled.p`
+    margin-left: 25px;
 `;

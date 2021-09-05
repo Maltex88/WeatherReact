@@ -15,7 +15,7 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
-    body: '#0c1445',
+    body: '#04122A',
     text: '#FAFAFA',
     color: 'white',
     toggleBorder: 'yellow',

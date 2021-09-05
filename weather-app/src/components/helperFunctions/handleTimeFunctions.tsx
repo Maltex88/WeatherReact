@@ -4,7 +4,9 @@ dayjs.extend(utc);
 import isBetween from 'dayjs/plugin/isBetween';
 dayjs.extend(isBetween);
 
-export const checkIfSunrise = (timezone: number, sunset: number, sunrise: number) => {
+import { timeData } from '../types';
+
+export const checkIfSunrise = (timezone: number, sunset: number, sunrise: number): boolean => {
     const locationTime = dayjs()
         .utcOffset(timezone / 3600)
         .format();
@@ -21,7 +23,7 @@ export const checkIfSunrise = (timezone: number, sunset: number, sunrise: number
     return isSunUp;
 };
 
-export const handleAndFormatTime = (timezone: number, sunset: number, sunrise: number) => {
+export const handleAndFormatTime = (timezone: number, sunset: number, sunrise: number): timeData => {
     let sunLocation = '';
     const locationTime = dayjs()
         .utcOffset(timezone / 3600)
@@ -40,5 +42,9 @@ export const handleAndFormatTime = (timezone: number, sunset: number, sunrise: n
     } else {
         sunLocation = 'night';
     }
-    return { locationTime, rise, set, sunLocation };
+    const dayMonthDateFormat = dayjs()
+        .utcOffset(timezone / 3600)
+        .format('dddd, MMMM D');
+    console.log(dayMonthDateFormat);
+    return { locationTime, rise, set, sunLocation, dayMonthDateFormat };
 };
