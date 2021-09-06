@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 //styles
 import { Main, LoadingPlaceHolder } from './weatherSlideShowStyles';
 //Functions
-import { DayOrNight } from '../../helperFunctions/returnTownImg';
+
 import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
 import { getWeatherDataByID } from '../../../api/axiosFetchFunctions';
 import { gradientColor } from '../../helperFunctions/gradientColor';
@@ -26,9 +26,7 @@ export const WeatherSlideshow: React.FC = () => {
         <Main>
             {SlideshowData ? (
                 SlideshowData.map((x) => {
-                    //return the date in "Monday, august 31"
                     const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    const BackgroundSkyImg = DayOrNight(timeData.sunLocation);
                     return (
                         <SlideItem
                             key={Math.random()}

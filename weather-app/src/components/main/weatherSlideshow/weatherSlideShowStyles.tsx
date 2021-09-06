@@ -3,7 +3,7 @@ export const Main = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: auto;
+    height: 85vh;
     color: white;
     font-size: 25px;
 `;

@@ -6,7 +6,6 @@ import { WeatherSlideshow } from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
 import { DailyWeather } from './weatherSearch/dailyWeatherDisplay';
 import { Footer } from '../footer/footer';
-import { Header } from '../header/header';
 import axios, { AxiosRequestConfig } from 'axios';
 
 import { weatherData } from '../types';
@@ -48,15 +47,13 @@ export const MainContainer: React.FC = (): React.ReactElement => {
     }, []);
 
     return (
-        <div>
+        <Main>
             <BackgroundImg>
                 {weatherDailyData ? <DailyWeather weatherData={weatherDailyData} /> : <Loading>loading</Loading>}
                 <SearchComponent newSearch={newWeatherSearch} />
             </BackgroundImg>
-            <Main>
-                <WeatherSlideshow />
-                <Footer />
-            </Main>
-        </div>
+            <WeatherSlideshow />
+            <Footer />
+        </Main>
     );
 };

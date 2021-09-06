@@ -12,6 +12,7 @@ export const Main = styled.div<Props>`
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     height: 50vh;
     min-width: 30vh;
     border-radius: 12px;
@@ -59,4 +60,24 @@ export const ColumnContainer = styled.div`
 
 export const ExtraMarginPara = styled.p`
     margin-left: 25px;
+`;
+
+export const IconContainer = styled.button`
+    display: flex;
+    align-self: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    transition: 0.4s ease-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 1);
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.14), 0 5px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 1);
+    }
 `;
