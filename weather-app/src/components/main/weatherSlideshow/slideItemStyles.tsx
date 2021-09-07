@@ -13,13 +13,13 @@ export const Main = styled.div<Props>`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50vh;
-    min-width: 30vh;
+    height: 425px;
+    min-width: 250px;
     border-radius: 12px;
     margin: 1rem;
 
     @media only screen and ${breakpoint.device.md} {
-        min-width: 60%;
+        min-width: 270px;
     }
 `;
 
@@ -66,7 +66,7 @@ export const IconContainer = styled.button`
     display: flex;
     align-self: center;
     align-items: center;
-    margin: 10px;
+    margin-bottom: 20px;
     cursor: pointer;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0);
@@ -74,9 +74,12 @@ export const IconContainer = styled.button`
     height: 50px;
     border-radius: 50%;
     border: 3px solid white;
-    transition: 0.4s ease-out;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 1);
+    transition: 0.3s ease-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.17), 0 3px 1px -2px rgba(0, 0, 0, 0.17), 0 1px 5px 0 rgba(0, 0, 0, 17);
     &:hover {
+        border: 3px solid #04122a;
+    }
+    &:active {
         background-color: rgba(0, 0, 0, 0.2);
         box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.14), 0 5px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 1);
     }

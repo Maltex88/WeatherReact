@@ -18,7 +18,7 @@ export const WeatherSlideshow: React.FC = () => {
     const [SlideshowData, setSlideshowData] = React.useState<slideShowData | null>();
     useEffect(() => {
         (async () => {
-            const AxiosWeatherData = await getWeatherDataByID('2147714,1850147,605155,2950158,3169070,5856195');
+            const AxiosWeatherData = await getWeatherDataByID('2147714,1850147,605155,2950158,3169070');
             setSlideshowData(AxiosWeatherData);
         })();
     }, []);

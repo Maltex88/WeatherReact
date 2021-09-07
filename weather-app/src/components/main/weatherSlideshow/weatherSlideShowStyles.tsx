@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-export const Main = styled.div`
+export const Main = styled.main`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 85vh;
+    min-height: 82.5vh;
     color: white;
     font-size: 25px;
 `;
