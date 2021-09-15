@@ -37,7 +37,9 @@ export const WeatherSlideshow: React.FC = () => {
                     );
                 })
             ) : (
-                <LoadingPlaceHolder />
+                <LoadingPlaceHolder>
+                    <p>hej</p>
+                </LoadingPlaceHolder>
             )}
         </Main>
     );

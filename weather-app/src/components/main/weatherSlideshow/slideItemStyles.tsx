@@ -15,7 +15,7 @@ export const CardSides = css`
 `;
 export const CardContainer = styled.div`
     width: 300px;
-    height: 500px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     perspective: 1000px;
@@ -33,6 +33,20 @@ export const CardContainer = styled.div`
 export const CardFrontMain = styled.div`
     ${CardSides}
     z-index: 0;
+
+    .dayTimeLoc {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .iconTemp {
+        margin: 0 1rem 2rem;
+        .temp {
+            p:nth-child(2) {
+                font-size: 17px;
+            }
+        }
+    }
 `;
 export const CardBackMain = styled.div`
     ${CardSides}
@@ -66,6 +80,9 @@ export const ParagrafCenter = styled.p`
 
 export const Icon = styled.i`
     font-size: 5rem;
+    position: absolute;
+    right: 15px;
+    bottom: 50%;
 `;
 
 export const Container = styled.div`

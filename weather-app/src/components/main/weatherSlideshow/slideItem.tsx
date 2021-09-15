@@ -12,7 +12,7 @@ export const SlideItem: React.FC<Props> = ({ weatherColor, timeData, weatherData
         <CardContainer>
             <CardInner weatherColor={weatherColor} className={flipped ? 'flipped' : ''}>
                 <CardFront toggle={toggler} timeData={timeData} weatherData={weatherData} />
-                <CardBack toggle={toggler} />
+                <CardBack toggle={toggler} timeData={timeData} weatherData={weatherData} />
             </CardInner>
         </CardContainer>
     );

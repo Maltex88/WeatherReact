@@ -31,7 +31,7 @@ export const weatherSearchByName = (searchWord: string): Promise<weatherData> =>
             appid: `${process.env.REACT_APP_GOOGLE_API_KEY}`,
             q: `${searchWord}`,
             units: 'metric',
-            lang: 'sv',
+            lang: 'eng',
         },
     };
     return axios
