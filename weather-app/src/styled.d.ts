@@ -1,4 +1,4 @@
-//req when using themes and global styles with styled components
+//styled.d.ts naming and declaration for module styled components, ts cant read modules from js librarys without it
 import 'styled-components';
 
 declare module 'styled-components' {
