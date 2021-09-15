@@ -1,28 +1,56 @@
 import breakpoint from '../../../commons/breakpoints';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface Props {
     weatherColor: string;
 }
 
-//trying out flip
-export const Main = styled.div<Props>`
-    ${(props) => props.weatherColor};
-    box-shadow: 0 0 0.3em rgba(0, 0, 0, 10);
-
+export const CardSides = css`
+    backface-visibility: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 425px;
-    min-width: 250px;
-    border-radius: 12px;
-    margin: 1rem;
+    position: absolute;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+`;
+export const CardContainer = styled.div`
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    perspective: 1000px;
+    transition: z-index 500ms, transform 500ms;
+    z-index: 0;
+    transform-style: preserve-3d;
 
+    &:flipped {
+        z-index: 1;
+    }
     @media only screen and ${breakpoint.device.md} {
         min-width: 270px;
     }
 `;
-
+export const CardFrontMain = styled.div`
+    ${CardSides}
+    z-index: 0;
+`;
+export const CardBackMain = styled.div`
+    ${CardSides}
+    transform: rotateY(-180deg) translate(0, 0);
+    z-index: 1;
+`;
+export const CardInner = styled.div<Props>`
+    ${(props) => props.weatherColor};
+    margin: 1rem;
+    display: flex;
+    flex: 1;
+    border-radius: 12px;
+    transition: transform 500ms;
+    transform-style: preserve-3d;
+    &.flipped {
+        transform: rotateY(180deg);
+    }
+`;
 export const ParagrafCenter = styled.p`
     text-align: center;
     font-size: 15px;
@@ -30,9 +58,7 @@ export const ParagrafCenter = styled.p`
     &:nth-child(1) {
         font-size: 22px;
     }
-    &:nth-child(2) {
-        opacity: 90%;
-    }
+
     &:nth-child(3) {
         font-size: 22px;
     }
@@ -58,6 +84,9 @@ export const ColumnContainer = styled.div`
     flex-direction: column;
 `;
 
+export const ColumnContainer1 = styled.div`
+    background-color: blue;
+`;
 export const ExtraMarginPara = styled.p`
     margin-left: 25px;
 `;
@@ -66,9 +95,10 @@ export const IconContainer = styled.button`
     display: flex;
     align-self: center;
     align-items: center;
-    margin-bottom: 20px;
-    cursor: pointer;
     justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    bottom: 25px;
     background-color: rgba(0, 0, 0, 0);
     width: 50px;
     height: 50px;
