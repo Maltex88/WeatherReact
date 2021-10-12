@@ -5,8 +5,6 @@ import { RiMoonFill } from 'react-icons/ri';
 import { useState } from 'react';
 const Head = styled.div`
     min-height: 7.5vh;
-    z-index: 1;
-    position: absolute;
 `;
 
 const Button = styled.button`

@@ -20,6 +20,7 @@ const App: React.FC = (): React.ReactElement => {
             <GlobalStyles />
             <Header displayArg={themeToggler} />
             <MainContainer />
+            <Footer />
         </ThemeProvider>
     );
 };
