@@ -20,25 +20,34 @@ export const CardBack: React.FC<Props> = ({ weatherData, timeData, toggle }) => 
         <CardBackMain>
             {windDescription ? (
                 <>
-                    <Container>
-                        <p>
-                            <WeatherIcon icon="wi-sunrise" />
-                            {timeData.rise}
-                        </p>
-                        <p>
-                            <WeatherIcon icon="wi-sunset" />
-                            {timeData.set}
-                        </p>
+                    <Container className="top">
+                        <section>
+                            <h4>Sunrise</h4>
+                            <p>
+                                <WeatherIcon icon="wi-sunrise" />
+                                {timeData.rise}
+                            </p>
+                        </section>
+                        <section>
+                            <h4>Sunset</h4>
+                            <p>
+                                <WeatherIcon icon="wi-sunset" />
+                                {timeData.set}
+                            </p>
+                        </section>
                     </Container>
-                    <Container>
-                        <p>
-                            <WeatherIcon icon="wi-humidity" />
-                            {weatherData.main.humidity}
-                        </p>
+                    <Container className="middle">
+                        <section>
+                            <h4>Humidity</h4>
+                            <p>
+                                {weatherData.main.humidity}
+                                <WeatherIcon icon="wi-humidity" />
+                            </p>
+                        </section>
                     </Container>
-                    <Container>
+                    <Container className="bottom">
                         <WeatherIcon icon={`wi-wind-beaufort-${windDescription.lvl}`} />
-                        <p>{windDescription.description}</p>
+                        <h4>{windDescription.description}</h4>
                         <WeatherIcon icon={`wi-wind towards-${weatherData.wind.deg}-deg`} />
                     </Container>
 

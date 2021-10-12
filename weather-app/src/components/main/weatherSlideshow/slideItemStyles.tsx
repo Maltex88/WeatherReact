@@ -90,10 +90,34 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     margin: 25px;
-
+    text-align: center;
     .column {
         display: flex;
         flex-direction: column;
+    }
+    &.top {
+        margin: 25px 25px 15px 25px;
+        p {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            i {
+                margin-bottom: 7px;
+            }
+        }
+    }
+    &.middle {
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        i {
+            margin: 5px;
+        }
+    }
+    &.bottom {
+        i {
+            align-self: flex-end;
+        }
     }
 `;
 
@@ -105,7 +129,7 @@ export const ColumnContainer1 = styled.div`
     background-color: blue;
 `;
 export const ExtraMarginPara = styled.p`
-    margin-left: 25px;
+    margin-left: 1rem;
 `;
 
 export const IconContainer = styled.button`
