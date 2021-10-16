@@ -30,6 +30,21 @@ export const CardContainer = styled.div`
         min-width: 270px;
     }
 `;
+export const CardContainerSkeletonLoader = styled.div`
+    width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+`;
+export const CardInnerSkeletonLoader = styled.div`
+    margin: 1rem;
+    margin-top: 2.5rem;
+    display: flex;
+    flex: 1;
+    border-radius: 12px;
+    border: 3px solid black;
+`;
+
 export const CardFrontMain = styled.div`
     ${CardSides}
     z-index: 0;
@@ -56,6 +71,7 @@ export const CardBackMain = styled.div`
 export const CardInner = styled.div<Props>`
     ${(props) => props.weatherColor};
     margin: 1rem;
+    margin-top: 2.5rem;
     display: flex;
     flex: 1;
     border-radius: 12px;

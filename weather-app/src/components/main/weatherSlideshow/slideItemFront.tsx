@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
     CardFrontMain,
     ParagrafCenter,
@@ -16,7 +16,7 @@ interface Props {
     timeData: timeData;
     toggle: () => void;
 }
-export const CardFront: React.FC<Props> = ({ timeData, weatherData, toggle }) => {
+export const CardFront = ({ timeData, weatherData, toggle }: Props): JSX.Element => {
     return (
         <CardFrontMain>
             <Container className="dayTimeLoc">

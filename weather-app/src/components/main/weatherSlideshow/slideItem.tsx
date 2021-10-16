@@ -3,6 +3,7 @@ import { CardContainer, CardInner } from './slideItemStyles';
 import { Props } from '../../types';
 import { CardBack } from './slideItemBack';
 import { CardFront } from './slideItemFront';
+
 export const SlideItem: React.FC<Props> = ({ weatherColor, timeData, weatherData }) => {
     const [flipped, setFlipped] = React.useState(false);
     const toggler = () => {

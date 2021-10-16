@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 //Components
-import { WeatherSlideshow } from './weatherSlideshow/weatherSlideshow';
+import WeatherSlideshow from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
 
 import { Main } from './mainStyle';
