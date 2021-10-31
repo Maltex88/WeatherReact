@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+import breakpoint from '../../../commons/breakpoints';
 import { useEffect } from 'react';
 import { getWeatherDataByID } from '../../../api/axiosFetchFunctions';
 import { slideShowData } from '../../types';
-import { Main, LoadingPlaceHolder, SlideHeader } from './weatherSlideShowStyles';
 import { SlideItem } from './slideItem';
 import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
 import { gradientColor } from '../../helperFunctions/gradientColor';
@@ -12,15 +13,14 @@ type SliderProps = {
     locationIds: string;
 };
 
-export const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
+const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
     const [SlideshowData, setSlideshowData] = React.useState<slideShowData | null>();
     useEffect(() => {
         (async () => {
             const AxiosWeatherData = await getWeatherDataByID(`${locationIds}`);
-            setTimeout(function () {
-                setSlideshowData(AxiosWeatherData);
-            }, 6000);
+            setSlideshowData(AxiosWeatherData);
         })();
+        console.log('when do i rerender?');
     }, []);
     return (
         <Main>
@@ -28,6 +28,7 @@ export const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Eleme
             {SlideshowData ? (
                 SlideshowData.map((x) => {
                     const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
+                    console.log('do i rerejder');
                     return (
                         <SlideItem
                             key={Math.random()}
@@ -53,3 +54,22 @@ export const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Eleme
         </Main>
     );
 };
+
+export default React.memo(CaroselSlide);
+
+const Main = styled.div`
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+
+    @media only screen and ${breakpoint.device.md} {
+        flex-direction: column;
+    }
+`;
+const SlideHeader = styled.h2`
+    position: absolute;
+    z-index: 1;
+    @media only screen and ${breakpoint.device.md} {
+        position: relative;
+    }
+`;

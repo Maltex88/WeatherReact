@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { windInfo } from '../../helperFunctions/beaufortFunc';
-import { CardBackMain, Container, IconContainer } from './slideItemStyles';
+import { BsInfoCircle } from 'react-icons/bs';
+import { IconContainer } from '../../buttons/info';
+import { CardBackMain, Container } from './slideItemStyles';
 import { IconComp, WeatherIcon } from '../../../assets/Icon';
 import { IoIosSwap } from 'react-icons/io';
 import { timeData, weatherData } from '../../types';
@@ -52,7 +54,7 @@ export const CardBack: React.FC<Props> = ({ weatherData, timeData, toggle }) => 
                     </Container>
 
                     <IconContainer onClick={toggle}>
-                        <IconComp Icon={IoIosSwap} />
+                        <IconComp Icon={BsInfoCircle} />
                     </IconContainer>
                 </>
             ) : (

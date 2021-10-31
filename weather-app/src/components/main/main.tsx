@@ -1,10 +1,8 @@
 import * as React from 'react';
-
+import styled from 'styled-components';
 //Components
 import WeatherSlideshow from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
-
-import { Main } from './mainStyle';
 
 export const MainContainer: React.FC = (): React.ReactElement => {
     return (
@@ -13,3 +11,8 @@ export const MainContainer: React.FC = (): React.ReactElement => {
         </Main>
     );
 };
+export const Main = styled.main`
+    display: flex;
+    justify-content: center;
+    min-height: 85vh;
+`;

@@ -15,9 +15,9 @@ export const CardSides = css`
 `;
 export const CardContainer = styled.div`
     width: 300px;
-    height: 450px;
+    height: 350px;
+
     display: flex;
-    flex-direction: column;
     perspective: 1000px;
     transition: z-index 500ms, transform 500ms;
     z-index: 0;
@@ -26,15 +26,15 @@ export const CardContainer = styled.div`
     &:flipped {
         z-index: 1;
     }
-    @media only screen and ${breakpoint.device.md} {
-        min-width: 270px;
-    }
 `;
 export const CardContainerSkeletonLoader = styled.div`
     width: 300px;
     height: 450px;
     display: flex;
     flex-direction: column;
+    @media only screen and ${breakpoint.device.sm} {
+        width: 200px;
+    }
 `;
 export const CardInnerSkeletonLoader = styled.div`
     margin: 1rem;
@@ -70,7 +70,7 @@ export const CardBackMain = styled.div`
 `;
 export const CardInner = styled.div<Props>`
     ${(props) => props.weatherColor};
-    margin: 1rem;
+    margin: 0.5rem;
     margin-top: 2.5rem;
     display: flex;
     flex: 1;
@@ -80,25 +80,25 @@ export const CardInner = styled.div<Props>`
     &.flipped {
         transform: rotateY(180deg);
     }
+    @media only screen and ${breakpoint.device.md} {
+    }
 `;
 export const ParagrafCenter = styled.p`
     text-align: center;
-    font-size: 15px;
+
     margin: 5px;
     &:nth-child(1) {
-        font-size: 22px;
     }
 
     &:nth-child(3) {
-        font-size: 22px;
     }
 `;
 
 export const Icon = styled.i`
-    font-size: 5rem;
-    position: absolute;
-    right: 15px;
-    bottom: 50%;
+    font-size: 5vh;
+    @media only screen and ${breakpoint.device.sm} {
+        font-size: 40px;
+    }
 `;
 
 export const Container = styled.div`
@@ -146,28 +146,4 @@ export const ColumnContainer1 = styled.div`
 `;
 export const ExtraMarginPara = styled.p`
     margin-left: 1rem;
-`;
-
-export const IconContainer = styled.button`
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    bottom: 25px;
-    background-color: rgba(0, 0, 0, 0);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid white;
-    transition: 0.3s ease-out;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.17), 0 3px 1px -2px rgba(0, 0, 0, 0.17), 0 1px 5px 0 rgba(0, 0, 0, 17);
-    &:hover {
-        border: 3px solid #04122a;
-    }
-    &:active {
-        background-color: rgba(0, 0, 0, 0.2);
-        box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.14), 0 5px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 1);
-    }
 `;

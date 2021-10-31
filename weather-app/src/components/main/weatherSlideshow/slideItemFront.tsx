@@ -1,15 +1,9 @@
 import React from 'react';
-import {
-    CardFrontMain,
-    ParagrafCenter,
-    Container,
-    IconContainer,
-    ColumnContainer,
-    Icon,
-    ExtraMarginPara,
-} from './slideItemStyles';
+import { IconContainer } from '../../buttons/info';
+import { CardFrontMain, ParagrafCenter, Container, ColumnContainer, Icon, ExtraMarginPara } from './slideItemStyles';
 import { IconComp } from '../../../assets/Icon';
 import { IoIosSwap } from 'react-icons/io';
+import { BsInfoCircle } from 'react-icons/bs';
 import { timeData, weatherData } from '../../types';
 interface Props {
     weatherData: weatherData;
@@ -44,7 +38,7 @@ export const CardFront = ({ timeData, weatherData, toggle }: Props): JSX.Element
             <ExtraMarginPara className="column">{weatherData.weather[0].description}</ExtraMarginPara>
 
             <IconContainer onClick={toggle}>
-                <IconComp Icon={IoIosSwap} />
+                <IconComp Icon={BsInfoCircle} />
             </IconContainer>
         </CardFrontMain>
     );
