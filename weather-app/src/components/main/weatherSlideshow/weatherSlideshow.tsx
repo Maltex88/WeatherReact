@@ -1,26 +1,13 @@
 import * as React from 'react';
-import { useEffect } from 'react';
-import 'react-responsive-carousel/lib/styles/carousel.css'; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-//styles
-
 import styled from 'styled-components';
 import breakpoint from '../../../commons/breakpoints';
+
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.css';
 
 import CaroselSlide from './caroselSlide';
 
 const WeatherSlideshow = (): JSX.Element => {
-    const [width, setWidth] = React.useState(window.innerWidth);
-    const [val, toggle] = React.useState(true);
-    const updateDimensions = () => {
-        setWidth(window.innerWidth);
-    };
-
-    useEffect(() => {
-        console.log('im running all the time');
-        window.addEventListener('resize', updateDimensions);
-        return () => window.removeEventListener('resize', updateDimensions);
-    }, []);
     return (
         <Main>
             <Carousel

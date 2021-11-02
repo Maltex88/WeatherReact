@@ -1,11 +1,11 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import { useEffect } from 'react';
 import { windInfo } from '../../helperFunctions/beaufortFunc';
 import { BsInfoCircle } from 'react-icons/bs';
 import { IconContainer } from '../../buttons/info';
-import { CardBackMain, Container } from './slideItemStyles';
+
 import { IconComp, WeatherIcon } from '../../../assets/Icon';
-import { IoIosSwap } from 'react-icons/io';
 import { timeData, weatherData } from '../../types';
 import { levelOfBeaufort } from '../../helperFunctions/beaufortFunc';
 interface Props {
@@ -63,3 +63,50 @@ export const CardBack: React.FC<Props> = ({ weatherData, timeData, toggle }) => 
         </CardBackMain>
     );
 };
+const CardBackMain = styled.div`
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+
+    transform: rotateY(-180deg) translate(0, 0);
+    z-index: 1;
+`;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px;
+    text-align: center;
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+    &.top {
+        margin: 25px 25px 15px 25px;
+        p {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            i {
+                margin-bottom: 7px;
+            }
+        }
+    }
+    &.middle {
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        i {
+            margin: 5px;
+        }
+    }
+    &.bottom {
+        i {
+            align-self: flex-end;
+        }
+    }
+`;

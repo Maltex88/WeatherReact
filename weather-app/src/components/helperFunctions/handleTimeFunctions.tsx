@@ -6,6 +6,7 @@ dayjs.extend(isBetween);
 
 import { timeData } from '../types';
 
+//format date, time and check if sun is up or down
 export const checkIfSunrise = (timezone: number, sunset: number, sunrise: number): boolean => {
     const locationTime = dayjs()
         .utcOffset(timezone / 3600)

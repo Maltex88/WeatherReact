@@ -13,22 +13,21 @@ const Button = styled.button`
 `;
 
 interface funcProps {
-    displayArg(): void;
+    changeTheme(): void;
 }
 
-export const Header: React.FC<funcProps> = (props) => {
+export const Header = ({ changeTheme }: funcProps): JSX.Element => {
     const [iconToggle, setIconToggle] = useState(true);
 
-    const NightorDay = (): void => {
+    const NightorDay = () => {
         iconToggle === true ? setIconToggle(false) : setIconToggle(true);
-        console.log(iconToggle);
     };
 
     return (
         <Head>
             <Button
                 onClick={() => {
-                    props.displayArg(), NightorDay();
+                    changeTheme(), NightorDay();
                 }}
             >
                 {iconToggle ? <RiSunFill color="yellow" size="30px" /> : <RiMoonFill color="yellow" size="30px" />}

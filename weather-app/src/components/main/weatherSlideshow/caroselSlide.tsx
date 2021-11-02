@@ -7,7 +7,7 @@ import { slideShowData } from '../../types';
 import { SlideItem } from './slideItem';
 import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
 import { gradientColor } from '../../helperFunctions/gradientColor';
-import { CardContainerSkeletonLoader, CardInnerSkeletonLoader } from './slideItemStyles';
+
 type SliderProps = {
     continent: string;
     locationIds: string;
@@ -15,12 +15,12 @@ type SliderProps = {
 
 const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
     const [SlideshowData, setSlideshowData] = React.useState<slideShowData | null>();
+
     useEffect(() => {
         (async () => {
             const AxiosWeatherData = await getWeatherDataByID(`${locationIds}`);
             setSlideshowData(AxiosWeatherData);
         })();
-        console.log('when do i rerender?');
     }, []);
     return (
         <Main>
@@ -28,7 +28,6 @@ const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
             {SlideshowData ? (
                 SlideshowData.map((x) => {
                     const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    console.log('do i rerejder');
                     return (
                         <SlideItem
                             key={Math.random()}
@@ -72,4 +71,23 @@ const SlideHeader = styled.h2`
     @media only screen and ${breakpoint.device.md} {
         position: relative;
     }
+`;
+
+const CardContainerSkeletonLoader = styled.div`
+    width: 300px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    @media only screen and ${breakpoint.device.sm} {
+        width: 200px;
+    }
+`;
+
+export const CardInnerSkeletonLoader = styled.div`
+    margin: 1rem;
+    margin-top: 2.5rem;
+    display: flex;
+    flex: 1;
+    border-radius: 12px;
+    border: 3px solid black;
 `;

@@ -1,3 +1,4 @@
+//change background color based on number
 export const gradientColor = (temp: number): string => {
     let styleString = ``;
 

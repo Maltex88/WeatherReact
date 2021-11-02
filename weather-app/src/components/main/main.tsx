@@ -1,12 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
+
 //Components
 import WeatherSlideshow from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
 
-export const MainContainer: React.FC = (): React.ReactElement => {
+export const MainContainer = (): JSX.Element => {
     return (
         <Main>
+            {/* SearchComponent */}
             <WeatherSlideshow />
         </Main>
     );

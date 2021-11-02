@@ -1,20 +1,10 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
-const SearchButton = styled.button`
-    margin: 5px;
-`;
-const SearchField = styled.input``;
-interface funcProps {
-    newSearch(searchWord: string): void;
-}
-export const SearchComponent: React.FC<funcProps> = (): React.ReactElement => {
-    //console.log(props.newSearch('Malmö'));
+export const SearchComponent = (): JSX.Element => {
     return (
         <div>
             <div>
-                <SearchField></SearchField>
-                <SearchButton>Search</SearchButton>
+                <p>Search</p>
             </div>
         </div>
     );

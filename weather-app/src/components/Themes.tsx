@@ -2,7 +2,7 @@ import 'styled-components';
 import { DefaultTheme } from 'styled-components';
 
 export const lightTheme: DefaultTheme = {
-    body: 'white' /*#73C7E7, #172A3A*/,
+    body: 'white',
     color: 'black',
     text: 'black',
     toggleBorder: 'yellow',
@@ -26,4 +26,3 @@ export const darkTheme: DefaultTheme = {
         secondary: 'black',
     },
 };
-/*#363537*/

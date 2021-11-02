@@ -1,3 +1,5 @@
+//set windinfo based on the beaufort wind standard
+
 export type windInfo = {
     lvl: number;
     description: string;
