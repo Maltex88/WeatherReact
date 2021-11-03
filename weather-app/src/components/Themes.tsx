@@ -1,8 +1,8 @@
 import 'styled-components';
 import { DefaultTheme } from 'styled-components';
-
+import colors from '../commons/colors';
 export const lightTheme: DefaultTheme = {
-    body: 'white',
+    body: `${colors.primaryLight}`,
     color: 'black',
     text: 'black',
     toggleBorder: 'yellow',
@@ -15,7 +15,7 @@ export const lightTheme: DefaultTheme = {
 };
 
 export const darkTheme: DefaultTheme = {
-    body: '#04122A',
+    body: `${colors.primaryDark}`,
     text: '#FAFAFA',
     color: 'white',
     toggleBorder: 'yellow',

@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { RiSunFill } from 'react-icons/ri';
 import { RiMoonFill } from 'react-icons/ri';
 import { useState } from 'react';
-const Head = styled.div`
-    min-height: 7.5vh;
-`;
+
+import { ReactComponent as Logotype } from '../../assets/Icon.svg';
+import { ReactComponent as Moon } from '../../assets/Moon.svg';
+import { ReactComponent as Sun } from '../../assets/Sun.svg';
 
 const Button = styled.button`
     padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0);
 `;
 
 interface funcProps {
@@ -24,7 +24,8 @@ export const Header = ({ changeTheme }: funcProps): JSX.Element => {
     };
 
     return (
-        <Head>
+        <Main>
+            <Logotype />
             <Button
                 onClick={() => {
                     changeTheme(), NightorDay();
@@ -32,6 +33,17 @@ export const Header = ({ changeTheme }: funcProps): JSX.Element => {
             >
                 {iconToggle ? <RiSunFill color="yellow" size="30px" /> : <RiMoonFill color="yellow" size="30px" />}
             </Button>
-        </Head>
+            <ContainerAbsolute>{iconToggle ? <Moon /> : <Sun />}</ContainerAbsolute>
+        </Main>
     );
 };
+const Main = styled.header`
+    padding: 1rem;
+    min-height: 7.5vh;
+`;
+
+const ContainerAbsolute = styled.div`
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+`;

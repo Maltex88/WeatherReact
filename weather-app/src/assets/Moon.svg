@@ -1,0 +1,22 @@
+<svg width="142" height="142" viewBox="0 0 142 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_if_14:370)">
+<path d="M71 141C109.66 141 141 109.66 141 71C141 32.3401 109.66 1 71 1C32.34 1 1 32.3401 1 71C1 109.66 32.34 141 71 141Z" fill="white"/>
+<path opacity="0.2" d="M64.1148 30.8361C68.5512 30.8361 72.1477 27.2397 72.1477 22.8034C72.1477 18.367 68.5512 14.7706 64.1148 14.7706C59.6784 14.7706 56.082 18.367 56.082 22.8034C56.082 27.2397 59.6784 30.8361 64.1148 30.8361Z" fill="black"/>
+<path opacity="0.2" d="M77.8853 111.164C82.3217 111.164 85.9181 107.567 85.9181 103.131C85.9181 98.6947 82.3217 95.0983 77.8853 95.0983C73.449 95.0983 69.8525 98.6947 69.8525 103.131C69.8525 107.567 73.449 111.164 77.8853 111.164Z" fill="black"/>
+<path opacity="0.2" d="M108.869 64.1147C112.038 64.1147 114.607 61.5459 114.607 58.377C114.607 55.2082 112.038 52.6393 108.869 52.6393C105.7 52.6393 103.131 55.2082 103.131 58.377C103.131 61.5459 105.7 64.1147 108.869 64.1147Z" fill="black"/>
+<path opacity="0.2" d="M43.4588 95.0984C53.5991 95.0984 61.8194 86.878 61.8194 76.7377C61.8194 66.5974 53.5991 58.3771 43.4588 58.3771C33.3185 58.3771 25.0981 66.5974 25.0981 76.7377C25.0981 86.878 33.3185 95.0984 43.4588 95.0984Z" fill="black"/>
+</g>
+<defs>
+<filter id="filter0_if_14:370" x="0" y="0" width="146" height="146" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="5" dy="5"/>
+<feGaussianBlur stdDeviation="3.5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.28 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_14:370"/>
+<feGaussianBlur stdDeviation="0.5" result="effect2_foregroundBlur_14:370"/>
+</filter>
+</defs>
+</svg>
