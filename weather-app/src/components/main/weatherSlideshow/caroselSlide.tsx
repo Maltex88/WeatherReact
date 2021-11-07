@@ -28,14 +28,7 @@ const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
             {SlideshowData ? (
                 SlideshowData.map((x) => {
                     const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    return (
-                        <SlideItem
-                            key={Math.random()}
-                            weatherColor={gradientColor(x.main.temp)}
-                            timeData={timeData}
-                            weatherData={x}
-                        />
-                    );
+                    return <SlideItem key={Math.random()} timeData={timeData} weatherData={x} />;
                 })
             ) : (
                 <>
@@ -58,8 +51,6 @@ export default React.memo(CaroselSlide);
 
 const Main = styled.div`
     display: flex;
-    justify-content: center;
-    font-size: 12px;
 
     @media only screen and ${breakpoint.device.md} {
         flex-direction: column;

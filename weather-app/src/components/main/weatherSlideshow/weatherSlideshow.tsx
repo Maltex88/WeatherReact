@@ -10,13 +10,7 @@ import CaroselSlide from './caroselSlide';
 const WeatherSlideshow = (): JSX.Element => {
     return (
         <Main>
-            <Carousel
-                showThumbs={false}
-                showIndicators={false}
-                infiniteLoop={true}
-                dynamicHeight={true}
-                showStatus={false}
-            >
+            <Carousel showThumbs={false} showIndicators={false} infiniteLoop={true} showStatus={false}>
                 <CaroselSlide continent={'Europe'} locationIds={'2147714,1850147,605155'} />
                 <CaroselSlide continent={'Africa'} locationIds={'2147714,1850147,605155'} />
                 <CaroselSlide continent={'Austraila'} locationIds={'2147714,1850147,605155'} />
@@ -27,13 +21,9 @@ const WeatherSlideshow = (): JSX.Element => {
 export default React.memo(WeatherSlideshow);
 
 export const Main = styled.main`
-    display: flex;
-    max-width: 900px;
-    height: 350px;
-    min-height: auto;
-    align-self: center;
-    flex-wrap: wrap;
-
+    & .carousel .slider-wrapper {
+        width: 650px;
+    }
     @media only screen and ${breakpoint.device.sm} {
         height: auto;
         width: 600px;

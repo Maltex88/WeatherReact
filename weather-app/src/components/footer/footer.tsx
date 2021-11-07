@@ -8,9 +8,5 @@ const Foot = styled.footer`
 `;
 
 export const Footer: React.FC = (): React.ReactElement => {
-    return (
-        <Foot>
-            <p>hej</p>
-        </Foot>
-    );
+    return <Foot />;
 };

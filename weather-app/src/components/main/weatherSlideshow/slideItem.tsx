@@ -4,15 +4,16 @@ import { Props } from '../../types';
 import { CardBack } from './slideItemBack';
 import { CardFront } from './slideItemFront';
 import breakpoint from '../../../commons/breakpoints';
+import colors from '../../../commons/colors';
 
-export const SlideItem = ({ weatherColor, timeData, weatherData }: Props): JSX.Element => {
+export const SlideItem = ({ timeData, weatherData }: Props): JSX.Element => {
     const [flipped, setFlipped] = React.useState(false);
     const toggler = () => {
         setFlipped(!flipped);
     };
     return (
         <CardContainer>
-            <CardInner weatherColor={weatherColor} className={flipped ? 'flipped' : ''}>
+            <CardInner className={flipped ? 'flipped' : ''}>
                 <CardFront toggle={toggler} timeData={timeData} weatherData={weatherData} />
                 <CardBack toggle={toggler} timeData={timeData} weatherData={weatherData} />
             </CardInner>
@@ -20,11 +21,8 @@ export const SlideItem = ({ weatherColor, timeData, weatherData }: Props): JSX.E
     );
 };
 
-interface styleProps {
-    weatherColor: string;
-}
-export const CardInner = styled.div<styleProps>`
-    ${(props) => props.weatherColor};
+export const CardInner = styled.div`
+    background-color: ${colors.green};
     margin: 0.5rem;
     margin-top: 2.5rem;
     display: flex;
@@ -39,8 +37,8 @@ export const CardInner = styled.div<styleProps>`
     }
 `;
 export const CardContainer = styled.div`
-    width: 300px;
-    height: 350px;
+    width: 100%;
+    height: 220px;
 
     display: flex;
     perspective: 1000px;

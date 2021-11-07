@@ -16,4 +16,9 @@ export const GlobalStyles = createGlobalStyle`
         color: ${({ theme }) => theme.color};
         transition: all 0.50s linear;
     }
+    button {
+        background: ${({ theme }) => theme.buttonStyles.primary};
+        border: 1px solid ${({ theme }) => theme.buttonStyles.secondary};
+        transition: all 0.50s linear;
+    }
     `;

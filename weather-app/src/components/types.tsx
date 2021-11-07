@@ -59,5 +59,4 @@ export type timeData = {
 export interface Props {
     weatherData: weatherData;
     timeData: timeData;
-    weatherColor: string;
 }

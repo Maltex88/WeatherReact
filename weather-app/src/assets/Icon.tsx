@@ -10,7 +10,7 @@ export const IconComp: React.FC<Props> = ({ Icon }) => {
         <IconContext.Provider
             value={{
                 color: 'white',
-                size: '24px',
+                size: '28px',
             }}
         >
             <Icon />

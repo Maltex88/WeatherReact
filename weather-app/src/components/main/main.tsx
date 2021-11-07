@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import WeatherSlideshow from './weatherSlideshow/weatherSlideshow';
 import { SearchComponent } from './weatherSearch/searchComponent';
 
+//TODO find better solution for info icon and refactor and delete icon comp in assets
 export const MainContainer = (): JSX.Element => {
     return (
         <Main>

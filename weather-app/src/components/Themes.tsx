@@ -3,14 +3,14 @@ import { DefaultTheme } from 'styled-components';
 import colors from '../commons/colors';
 export const lightTheme: DefaultTheme = {
     body: `${colors.primaryLight}`,
-    color: 'black',
+    color: 'white',
     text: 'black',
     toggleBorder: 'yellow',
     background: 'yellow',
 
     buttonStyles: {
-        primary: '#143166',
-        secondary: 'white',
+        primary: `${colors.primaryDark}`,
+        secondary: `${colors.black}`,
     },
 };
 
@@ -22,7 +22,7 @@ export const darkTheme: DefaultTheme = {
     background: 'yellow',
 
     buttonStyles: {
-        primary: 'white',
-        secondary: 'black',
+        primary: `${colors.primaryLight}`,
+        secondary: `${colors.white}`,
     },
 };
