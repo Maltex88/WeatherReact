@@ -35,10 +35,12 @@ export const Header = ({ changeTheme }: funcProps): JSX.Element => {
         </Main>
     );
 };
+
 const Main = styled.header`
     display: flex;
-    padding: 1rem;
     min-height: 7.5vh;
+    padding-left: 15px;
+    align-items: flex-end;
 `;
 
 const ContainerAbsolute = styled.div`

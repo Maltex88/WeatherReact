@@ -11,9 +11,14 @@ const WeatherSlideshow = (): JSX.Element => {
     return (
         <Main>
             <Carousel showThumbs={false} showIndicators={false} infiniteLoop={true} showStatus={false}>
-                <CaroselSlide continent={'Europe'} locationIds={'2147714,1850147,605155'} />
-                <CaroselSlide continent={'Africa'} locationIds={'2147714,1850147,605155'} />
-                <CaroselSlide continent={'Austraila'} locationIds={'2147714,1850147,605155'} />
+                <CaroselSlide continent={'Sweden'} locationIds={'2692969,2711537,602150'} />
+                <CaroselSlide continent={'Italy'} locationIds={'3169070,3173435,3172394'} />
+                <CaroselSlide continent={'France'} locationIds={'2968815,2996944,6454924'} />
+            </Carousel>
+            <Carousel showThumbs={false} showIndicators={false} infiniteLoop={true} showStatus={false}>
+                <CaroselSlide continent={'USA'} locationIds={'5128638,5368361,4699066'} />
+                <CaroselSlide continent={'Australia'} locationIds={'2147714,2158177,2174003'} />
+                <CaroselSlide continent={'China'} locationIds={'1796236,1816670,1814906'} />
             </Carousel>
         </Main>
     );
@@ -22,7 +27,7 @@ export default React.memo(WeatherSlideshow);
 
 export const Main = styled.main`
     width: 650px;
-    height: 250px;
+    height: 550px;
 
     @media only screen and ${breakpoint.device.sm} {
         height: auto;
@@ -48,5 +53,9 @@ export const Main = styled.main`
     }
     .carousel .control-prev.control-arrow {
         left: 220px;
+    }
+    .carousel .control-arrow,
+    .carousel.carousel-slider .control-arrow {
+        filter: brightness(15);
     }
 `;
