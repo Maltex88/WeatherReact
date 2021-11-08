@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import breakpoint from '../../../commons/breakpoints';
+import size from '../../../commons/font';
 import { useEffect } from 'react';
 import { getWeatherDataByID } from '../../../api/axiosFetchFunctions';
 import { slideShowData } from '../../types';
 import { SlideItem } from './slideItem';
 import { handleAndFormatTime } from '../../helperFunctions/handleTimeFunctions';
-import { gradientColor } from '../../helperFunctions/gradientColor';
 
 type SliderProps = {
     continent: string;
@@ -24,43 +24,57 @@ const CaroselSlide = ({ continent, locationIds }: SliderProps): JSX.Element => {
     }, []);
     return (
         <Main>
-            <SlideHeader>{continent}</SlideHeader>
-            {SlideshowData ? (
-                SlideshowData.map((x) => {
-                    const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
-                    return <SlideItem key={Math.random()} timeData={timeData} weatherData={x} />;
-                })
-            ) : (
-                <>
-                    <CardContainerSkeletonLoader>
-                        <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
-                    </CardContainerSkeletonLoader>
-                    <CardContainerSkeletonLoader>
-                        <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
-                    </CardContainerSkeletonLoader>
-                    <CardContainerSkeletonLoader>
-                        <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
-                    </CardContainerSkeletonLoader>
-                </>
-            )}
+            <HeadContainer>
+                <SlideHeader>{continent}</SlideHeader>
+            </HeadContainer>
+            <BodyContainer>
+                {SlideshowData ? (
+                    SlideshowData.map((x) => {
+                        const timeData = handleAndFormatTime(x.sys.timezone, x.sys.sunset, x.sys.sunrise);
+                        return <SlideItem key={Math.random()} timeData={timeData} weatherData={x} />;
+                    })
+                ) : (
+                    <>
+                        <CardContainerSkeletonLoader>
+                            <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
+                        </CardContainerSkeletonLoader>
+                        <CardContainerSkeletonLoader>
+                            <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
+                        </CardContainerSkeletonLoader>
+                        <CardContainerSkeletonLoader>
+                            <CardInnerSkeletonLoader></CardInnerSkeletonLoader>
+                        </CardContainerSkeletonLoader>
+                    </>
+                )}
+            </BodyContainer>
         </Main>
     );
 };
 
 export default React.memo(CaroselSlide);
 
+const BodyContainer = styled.div`
+    display: flex;
+    align-items: center;
+    height: 220px;
+`;
+const HeadContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 29px;
+`;
 const Main = styled.div`
     display: flex;
-
+    flex-direction: column;
     @media only screen and ${breakpoint.device.md} {
         flex-direction: column;
     }
 `;
 const SlideHeader = styled.h2`
-    position: absolute;
-    z-index: 1;
+    align-self: center;
+    font-size: 24px;
     @media only screen and ${breakpoint.device.md} {
-        position: relative;
     }
 `;
 

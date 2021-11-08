@@ -21,9 +21,9 @@ const WeatherSlideshow = (): JSX.Element => {
 export default React.memo(WeatherSlideshow);
 
 export const Main = styled.main`
-    & .carousel .slider-wrapper {
-        width: 650px;
-    }
+    width: 650px;
+    height: 250px;
+
     @media only screen and ${breakpoint.device.sm} {
         height: auto;
         width: 600px;
@@ -31,5 +31,22 @@ export const Main = styled.main`
     @media only screen and ${breakpoint.device.ms} {
         height: auto;
         width: 300px;
+    }
+
+    & .carousel .slider-wrapper {
+        height: 240px;
+        width: 650px;
+    }
+
+    .carousel.carousel-slider .control-arrow {
+        top: 36px;
+        opacity: 1;
+        width: 50px;
+    }
+    .carousel .control-next.control-arrow {
+        right: 220px;
+    }
+    .carousel .control-prev.control-arrow {
+        left: 220px;
     }
 `;

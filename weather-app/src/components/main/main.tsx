@@ -11,11 +11,13 @@ export const MainContainer = (): JSX.Element => {
         <Main>
             {/* SearchComponent */}
             <WeatherSlideshow />
+            <WeatherSlideshow />
         </Main>
     );
 };
 export const Main = styled.main`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     min-height: 85vh;
 `;

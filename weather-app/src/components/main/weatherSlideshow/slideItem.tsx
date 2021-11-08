@@ -38,7 +38,7 @@ export const CardInner = styled.div`
 `;
 export const CardContainer = styled.div`
     width: 100%;
-    height: 220px;
+    min-height: 220px;
 
     display: flex;
     perspective: 1000px;
